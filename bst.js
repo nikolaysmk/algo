@@ -34,40 +34,40 @@ class BinarySearchTree {
   }
 
   insert(data) {
-    const newNode = new Node(data);
+    const newNode = new Node(data); // Создаем новый узел
 
     if (this.root === null) {
-      this.root = newNode;
+      this.root = newNode; // Если дерево пустое, делаем новый узел корнем
     } else {
-      this.insertNode(this.root, newNode);
+      this.insertNode(this.root, newNode); // Иначе вызываем функцию для вставки узла
     }
   }
 
   insertNode(node, newNode) {
     if (newNode.data < node.data) {
+      // Сравниваем данные нового узла с текущим узлом
       if (node.left === null) {
-        node.left = newNode;
+        node.left = newNode; // Если левый потомок пуст, вставляем туда новый узел
       } else {
-        this.insertNode(node.left, newNode);
+        this.insertNode(node.left, newNode); // Иначе рекурсивно вызываем функцию для левого поддерева
       }
     } else {
       if (node.right === null) {
-        node.right = newNode;
+        node.right = newNode; // Если правый потомок пуст, вставляем туда новый узел
       } else {
-        this.insertNode(node.right, newNode);
+        this.insertNode(node.right, newNode); // Иначе рекурсивно вызываем функцию для правого поддерева
       }
     }
   }
-
   search(node, data) {
-    if (node === null) return null;
+    if (node === null) return null; // Если узел пуст, возвращаем null
 
     if (data < node.data) {
-      return this.search(node.left, data);
+      return this.search(node.left, data); // Ищем в левом поддереве
     } else if (data > node.data) {
-      return this.search(node.right, data);
+      return this.search(node.right, data); // Ищем в правом поддереве
     } else {
-      return node;
+      return node; // Нашли узел, возвращаем его
     }
   }
 
@@ -109,7 +109,10 @@ class BinarySearchTree {
   }
 
   findMinNode(node) {
-    if (node.left === null) return node;
-    else return this.findMinNode(node.left);
+    if (node.left === null)
+      return node; // Наименьший элемент в BST находится в самом левом узле
+    else return this.findMinNode(node.left); // Продолжаем искать в левом поддереве
   }
 }
+
+module.exports = BinarySearchTree;
