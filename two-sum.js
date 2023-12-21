@@ -7,20 +7,39 @@
 
 // Time complexity: O(n)
 
-function twoSum(nums, target) {
-  let map = new Map();
+// function twoSum(nums, target) {
+//   let map = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     let complement = target - nums[i];
+//     if (map.has(complement)) {
+//       return [map.get(complement), i];
+//     }
+//     map.set(nums[i], i);
+//   }
+//   return [];
+// }
+//
+// console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+// console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+// console.log(twoSum([3, 3], 6)); // [0, 1]
+//
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+  const hash = new Map()
+
   for (let i = 0; i < nums.length; i++) {
-    let complement = target - nums[i];
-    if (map.has(complement)) {
-      return [map.get(complement), i];
+    const some = target - nums[i]
+    if (hash.get(some) != undefined) {
+      return [hash.get(some), i]
     }
-    map.set(nums[i], i);
+    hash.set(nums[i], i)
   }
-  return [];
-}
 
-console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
-console.log(twoSum([3, 2, 4], 6)); // [1, 2]
-console.log(twoSum([3, 3], 6)); // [0, 1]
-
+};
 module.exports = twoSum;
+
