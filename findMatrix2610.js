@@ -8,9 +8,10 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var findMatrix = function(nums) {
+var findMatrix = function (nums) {
   const elementCount = {};
   const result = [];
+
   for (const num of nums) {
     elementCount[num] = (elementCount[num] || 0) + 1;
   }
